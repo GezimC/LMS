@@ -3,8 +3,10 @@ package org.example;
 import org.example.dao.AuthorDao;
 import org.example.helper.DbConnection;
 import org.example.model.Author;
+import org.example.service.AuthorService;
 
 import java.sql.Connection;
+import java.util.Scanner;
 
 /**
  * Hello world!
@@ -21,9 +23,19 @@ public class App
 //            e.printStackTrace();
 //        }
 
-        AuthorDao authDao = new AuthorDao();
+        AuthorService authorService = new AuthorService();
 
-        boolean result =authDao.createAuthor(new Author("testabc", "abctest"));
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Name of author: ");
+        String name = scanner.nextLine();
+
+
+        System.out.println("Lastname of author: ");
+        String lastname = scanner.nextLine();
+
+
+        boolean result =authorService.createAuthor(name, lastname);
 
         if (result)
         {

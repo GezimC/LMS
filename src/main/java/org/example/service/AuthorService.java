@@ -6,21 +6,21 @@ import org.example.model.Author;
 public class AuthorService {
 
     private AuthorDao authorDao = new AuthorDao();
+    private Author author = new Author();
 
     public boolean createAuthor(String name, String lastname)
     {
 
-        if(name.isEmpty())
+        if(name.isEmpty() | name == null | lastname.isEmpty() | lastname ==null)
         {
-            System.out.println("Name should not be empty");
+            System.out.println("Name or Lastname should not be empty");
             return false;
         }
 
-        Author author = new Author(name, lastname);
+        author.setName(name);
+        author.setLastname(lastname);
 
-        authorDao.createAuthor(author);
+        return authorDao.createAuthor(author);
 
-
-        return true;
     }
 }
