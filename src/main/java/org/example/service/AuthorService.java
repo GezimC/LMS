@@ -23,4 +23,23 @@ public class AuthorService {
         return authorDao.createAuthor(author);
 
     }
+
+
+    public boolean updateAuthor(int id, String name, String lastname)
+    {
+
+        author.setId(id);
+        author.setName(name);
+        author.setLastname(lastname);
+
+        return  authorDao.updateAuthor(author);
+    }
+
+
+
+
+
+
+
+
 }
