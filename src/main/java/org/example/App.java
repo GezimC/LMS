@@ -27,6 +27,11 @@ public class App
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Id of author: ");
+        Integer id = scanner.nextInt();
+
+        scanner.nextLine();
+
         System.out.println("Name of author: ");
         String name = scanner.nextLine();
 
@@ -35,15 +40,15 @@ public class App
         String lastname = scanner.nextLine();
 
 
-        boolean result =authorService.createAuthor(name, lastname);
+        boolean result =authorService.updateAuthor(id, name,lastname);
 
         if (result)
         {
-            System.out.println("Author created!");
+            System.out.println("Author Updated!");
         }
         else
         {
-            System.out.println("Author not created!");
+            System.out.println("Author not updated!");
         }
     }
 }

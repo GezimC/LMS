@@ -27,6 +27,11 @@ public class AuthorService {
 
     public boolean updateAuthor(int id, String name, String lastname)
     {
+        if (id<=0)
+        {
+            System.out.println("Id should be greater than 0");
+            return false;
+        }
 
         author.setId(id);
         author.setName(name);

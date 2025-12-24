@@ -72,4 +72,31 @@ public class AuthorDao {
     }
 
 
+    public boolean deleteAuthor(int id)
+    {
+        String sql = "{Call dbo.usp_Author_Delete (?)}";
+
+        try (
+                Connection connection = DbConnection.connect();
+                CallableStatement cstm = connection.prepareCall(sql);
+                )
+        {
+            cstm.setInt(1, id);
+
+            int rowsAffected = cstm.executeUpdate();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+
+            return  false;
+
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return  false;
+        }
+    }
 }
