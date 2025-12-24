@@ -50,5 +50,8 @@ public class Author {
         this.lastname = lastname;
     }
 
-
+    @Override
+    public String toString() {
+        return "Author [id=" + id + ", name=" + name + ", lastname=" + lastname + "]";
+    }
 }

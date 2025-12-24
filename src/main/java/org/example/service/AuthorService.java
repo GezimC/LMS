@@ -3,6 +3,8 @@ package org.example.service;
 import org.example.dao.AuthorDao;
 import org.example.model.Author;
 
+import java.util.List;
+
 public class AuthorService {
 
     private AuthorDao authorDao = new AuthorDao();
@@ -50,6 +52,11 @@ public class AuthorService {
         }
 
         return authorDao.deleteAuthor(id);
+    }
+
+
+    public List<Author> getAllAuthors() {
+        return authorDao.getAllAuthors();
     }
 
 

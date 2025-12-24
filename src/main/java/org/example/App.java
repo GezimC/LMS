@@ -6,6 +6,7 @@ import org.example.model.Author;
 import org.example.service.AuthorService;
 
 import java.sql.Connection;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -25,23 +26,33 @@ public class App
 
         AuthorService authorService = new AuthorService();
 
-        Scanner scanner = new Scanner(System.in);
+        List<Author> authors = authorService.getAllAuthors();
 
-        System.out.println("Id of author to be deleted: ");
-        Integer id = scanner.nextInt();
-        scanner.nextLine();
-
-        boolean result = authorService.deleteAuthor(id);
-
-        if (result)
+        for (Author author : authors)
         {
-            System.out.println("Author deleted!");
-        }
-        else
-        {
-            System.out.println("Author not deleted!");
+            System.out.println(author);
         }
 
+
+
+
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.println("Id of author to be deleted: ");
+//        Integer id = scanner.nextInt();
+//        scanner.nextLine();
+//
+//        boolean result = authorService.deleteAuthor(id);
+//
+//        if (result)
+//        {
+//            System.out.println("Author deleted!");
+//        }
+//        else
+//        {
+//            System.out.println("Author not deleted!");
+//        }
+//
 
 
 //
