@@ -3,10 +3,9 @@ package org.example.dao;
 import org.example.model.Author;
 import org.example.helper.DbConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.CallableStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AuthorDao {
@@ -98,5 +97,36 @@ public class AuthorDao {
             e.printStackTrace();
             return  false;
         }
+    }
+
+
+
+    public List<Author> getAllAuthors()
+    {
+        String sql = "{Call dbo.usp_Author_GetAll ()}";
+        List<Author> authors = new ArrayList<>();
+
+        try (
+                Connection connection = DbConnection.connect();
+                CallableStatement cstm = connection.prepareCall(sql);
+                ResultSet rs = cstm.executeQuery();
+        )
+        {
+            while (rs.next())
+            {
+                Author author = new Author();
+                author.setId(rs.getInt("Id"));
+                author.setName(rs.getString("Name"));
+                author.setLastname(rs.getString("Lastname"));
+                authors.add(author);
+            }
+
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return authors;
     }
 }

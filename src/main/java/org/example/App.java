@@ -27,28 +27,41 @@ public class App
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Id of author: ");
+        System.out.println("Id of author to be deleted: ");
         Integer id = scanner.nextInt();
-
         scanner.nextLine();
 
-        System.out.println("Name of author: ");
-        String name = scanner.nextLine();
-
-
-        System.out.println("Lastname of author: ");
-        String lastname = scanner.nextLine();
-
-
-        boolean result =authorService.updateAuthor(id, name,lastname);
+        boolean result = authorService.deleteAuthor(id);
 
         if (result)
         {
-            System.out.println("Author Updated!");
+            System.out.println("Author deleted!");
         }
         else
         {
-            System.out.println("Author not updated!");
+            System.out.println("Author not deleted!");
         }
+
+
+
+//
+//        System.out.println("Name of author: ");
+//        String name = scanner.nextLine();
+//
+//
+//        System.out.println("Lastname of author: ");
+//        String lastname = scanner.nextLine();
+//
+//
+//        boolean result =authorService.updateAuthor(id, name,lastname);
+//
+//        if (result)
+//        {
+//            System.out.println("Author Updated!");
+//        }
+//        else
+//        {
+//            System.out.println("Author not updated!");
+//        }
     }
 }

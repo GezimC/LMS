@@ -41,7 +41,16 @@ public class AuthorService {
     }
 
 
+    public boolean deleteAuthor (int id)
+    {
+        if (id<=0)
+        {
+            System.out.println("Id should be greater than 0");
+            return false;
+        }
 
+        return authorDao.deleteAuthor(id);
+    }
 
 
 
