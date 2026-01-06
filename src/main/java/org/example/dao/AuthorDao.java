@@ -99,8 +99,6 @@ public class AuthorDao {
         }
     }
 
-
-
     public List<Author> getAllAuthors()
     {
         String sql = "{Call dbo.usp_Author_GetAll ()}";

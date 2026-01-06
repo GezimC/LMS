@@ -41,7 +41,6 @@ public class AuthorService {
         return  authorDao.updateAuthor(author);
     }
 
-
     public boolean deleteAuthor (int id)
     {
         if (id<=0)
@@ -53,13 +52,8 @@ public class AuthorService {
         return authorDao.deleteAuthor(id);
     }
 
-
     public List<Author> getAllAuthors() {
         return authorDao.getAllAuthors();
     }
-
-
-
-
 
 }
