@@ -13,7 +13,7 @@ public class AuthorService {
     public boolean createAuthor(String name, String lastname)
     {
 
-        if(name.isEmpty() | name == null | lastname.isEmpty() | lastname ==null)
+        if(name.isEmpty() | lastname.isEmpty())
         {
             System.out.println("Name or Lastname should not be empty");
             return false;
@@ -25,7 +25,6 @@ public class AuthorService {
         return authorDao.createAuthor(author);
 
     }
-
 
     public boolean updateAuthor(int id, String name, String lastname)
     {
