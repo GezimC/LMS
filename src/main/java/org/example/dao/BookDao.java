@@ -72,7 +72,7 @@ public class BookDao {
 
     public boolean updateBook(Book book)
     {
-        String sql = "{Call dbo.usp_Book_Update (?, ?, ?,?,?,?,?,?,?)}";
+        String sql = "{Call dbo.usp_Book_Update (?, ?, ?,?,?,?,?,?,?,?)}";
 
         try (
                 Connection connection = DbConnection.connect();
@@ -88,6 +88,7 @@ public class BookDao {
             cstm.setString(7, book.getPublishingHouse());
             cstm.setInt(8, book.getPublishedYear());
             cstm.setInt(9, book.getQuantity());
+            cstm.setInt(10, 1);
 
 
             int rowsAffected = cstm.executeUpdate();

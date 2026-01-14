@@ -1,31 +1,36 @@
 package org.example;
 import org.example.service.BookService;
 import org.example.ui.AuthorUI;
+import org.example.ui.BookUI;
+
+import java.util.Scanner;
 
 public class App 
 {
     public static void main( String[] args )
     {
-//        AuthorUI authorUI = new AuthorUI();
-//        authorUI.start();
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
 
-        BookService bookService = new BookService();
+        while (running) {
+            System.out.println("""
+                === MAIN MENU ===
+                1. Author Management
+                2. Book Management
+                0. Exit
+                Choose option:
+                """);
 
-//        if(bookService.createBook("Test_A", 1, 1,
-//                "123123123123", 1, "PublishingH_A",
-//                2008,10))
-//        {
-//            System.out.println("Book created!");
-//        }
+            int choice = scanner.nextInt();
+            scanner.nextLine();
 
-
-        if(bookService.updateBook(2,null, 1, 1,
-                null, 1, null,
-                2025,20))
-        {
-            System.out.println("Book update!");
+            switch (choice) {
+                case 1 -> new AuthorUI().start();
+                case 2 -> new BookUI().start();
+                case 0 -> running = false;
+                default -> System.out.println("Invalid option!");
+            }
         }
-
 
 
     }
