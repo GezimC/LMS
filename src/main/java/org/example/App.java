@@ -1,10 +1,13 @@
 package org.example;
+import org.example.model.Author;
+import org.example.model.Loan;
 import org.example.service.BookService;
 import org.example.service.LoanService;
 import org.example.ui.AuthorUI;
 import org.example.ui.BookUI;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class App 
@@ -37,13 +40,25 @@ public class App
 
         LoanService ls = new LoanService();
 
-        if (ls.createLoan(2, 1, LocalDate.now()))
-        {
-            System.out.println("Loan created");
-        }
-        else {
-            System.out.println("Failed!!!!");
-        }
+//        if (ls.createLoan(3, 1, LocalDate.now()))
+//        {
+//            System.out.println("Loan created");
+//        }
+//        else {
+//            System.out.println("Failed!!!!");
+//        }
 
+
+//        if (ls.returnLoan(1))
+//        {
+//            System.out.println("Loan returned");
+//        }
+//        else  {
+//            System.out.println("Failed!!!!");
+//        }
+
+
+        List<Loan> activeLoans =     ls.getActiveLoansByMemberId(1);
+        activeLoans.forEach(System.out::println);
     }
 }

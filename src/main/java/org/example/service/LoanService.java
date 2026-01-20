@@ -1,10 +1,12 @@
 package org.example.service;
 
 import org.example.dao.LoanDao;
+import org.example.model.Author;
 import org.example.model.Loan;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class LoanService {
 
@@ -26,6 +28,21 @@ public class LoanService {
         loan.setDueDate(loanDate.plusDays(14));
 
         return loanDao.createLoan(loan);
+
+    }
+
+
+    public boolean returnLoan(int loadId)
+    {
+        // check if book is returned
+        // check if book is late
+        return loanDao.returnLoan(loadId);
+    }
+
+
+    public List<Loan> getActiveLoansByMemberId( int membmerId) {
+
+        return loanDao.getActiveLoansByMemberId(membmerId);
 
     }
 }
