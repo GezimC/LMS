@@ -5,6 +5,7 @@ import org.example.model.Book;
 
 public class BookService {
 
+    // check book to be inside methods
     private BookDao bookDao = new BookDao();
     private Book book = new Book();
 
