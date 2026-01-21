@@ -3,6 +3,7 @@ package org.example.dao;
 import org.example.helper.DbConnection;
 import org.example.model.Author;
 import org.example.model.Loan;
+import org.example.model.dtos.LoanDto;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -107,7 +108,37 @@ public class LoanDao {
     // returned due date passed loans
 
     // return all loans
+    public List<LoanDto> getAllLoans()
+    {
+        String sql = "{Call dbo.usp_Loan_GetAll ()}";
+        List<LoanDto> loans = new ArrayList<>();
 
+        try (
+                Connection connection = DbConnection.connect();
+                CallableStatement cstm = connection.prepareCall(sql);
+                ResultSet rs = cstm.executeQuery();
+        )
+        {
+            while (rs.next())
+            {
+                LoanDto loanDto = new LoanDto();
+                loanDto.Id = rs.getInt("Id");
+                loanDto.BookTitle = rs.getString("BookTitle");
+                loanDto.Fullname = rs.getString("Fullname");
+                loanDto.LoanDate = rs.getDate("LoanDate").toLocalDate();
+                loanDto.DueDate = rs.getDate("DueDate").toLocalDate();
+                loanDto.ReturnedDate = rs.getDate("ReturnedDate").toLocalDate();
+                loans.add(loanDto);
+            }
+
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return loans;
+    }
 
 
 
